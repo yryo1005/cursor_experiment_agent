@@ -1,4 +1,4 @@
-# Experiment Agent
+# Cursor Experiment Agent
 
 過去の実験指示書（`order_{k}.md`）と結果報告書（`report_{k}.md`）を読み込み、マルチエージェント・ディベート（MAD）とレッドチーミングを経て、次期実験指示書 `order_{k+1}.md` を自動生成する LangGraph × Gemini API ベースの Agent です。
 
@@ -56,8 +56,14 @@ cd cursor_experiment_agent
 uv venv .agent_env
 source .agent_env/bin/activate
 uv pip install -r requirements.txt
-cp tokens.json.example tokens.json
 # tokens.json の "gemini" に API キーを設定
+```
+
+```bash
+# 親リポジトリで
+mkdir orders
+mkdir reports
+mkdir logs
 ```
 
 ### 基本的な実行
