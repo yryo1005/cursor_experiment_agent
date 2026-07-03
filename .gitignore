@@ -1,0 +1,18 @@
+# Agent 実行で生成されるログ（サンプル order_000 / report_000 は追跡可）
+log_*.md
+order_[0-9]*.md
+report_[0-9]*.md
+tokens.json
+cursor_template/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+cursor_template/

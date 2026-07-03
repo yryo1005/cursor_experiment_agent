@@ -1,0 +1,3 @@
+@cursor_template/root_prompt.mdや@cursor_template/prompts/machine_learning_prompt.mdの中のプロンプトと重複する内容をエージェントが出力するオーダーに含めいないようにして
+
+会話ログはJsonのままではなく，読みやすいようにマークダウンにするように
