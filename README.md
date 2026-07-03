@@ -42,6 +42,7 @@ parent-repo/
 ├── ex001_.../                # 実験コード
 ├── tokens.json               # Gemini の API キー（git 管理外）
 └── cursor_experiment_agent/  # 本リポジトリ（サブモジュール）
+    ├── .agent_env/           # エージェントを実行するための仮想環境
     ├── run_agent.py
     ├── src/
     └── tokens.json.example   # API キーのサンプル
