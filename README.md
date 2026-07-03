@@ -40,18 +40,21 @@ parent-repo/
 ├── reports/                  # report_000.md, report_001.md, …
 ├── logs/                     # log_000.md, log_001.md, …（Agent 出力）
 ├── ex001_.../                # 実験コード
-└── Experiment_Agent_v2/      # 本リポジトリ（サブモジュール）
+├── tokens.json               # Gemini の API キー（git 管理外）
+└── cursor_experiment_agent/  # 本リポジトリ（サブモジュール）
     ├── run_agent.py
     ├── src/
-    ├── tokens.json           # API キー（git 管理外）
-    └── tokens.json.example
+    └── tokens.json.example   # API キーのサンプル
 ```
 
 ### セットアップ
 
 ```bash
 # 本リポジトリ（サブモジュール）で
-pip install -r requirements.txt
+cd cursor_experiment_agent
+uv venv .agent_env
+source .agent_env/bin/activate
+uv pip install -r requirements.txt
 cp tokens.json.example tokens.json
 # tokens.json の "gemini" に API キーを設定
 ```
@@ -61,7 +64,7 @@ cp tokens.json.example tokens.json
 実験を実施し `report_{k}.md` を作成したあと、親リポジトリのルートで:
 
 ```bash
-python3 Experiment_Agent_v2/run_agent.py orders reports logs cursor_template
+cursor_experiment_agent/.agent_env/bin/python Experiment_Agent_v2/run_agent.py orders reports logs cursor_template
 ```
 
 | 引数 | 説明 |
@@ -76,20 +79,20 @@ python3 Experiment_Agent_v2/run_agent.py orders reports logs cursor_template
 ```bash
 # 親リポジトリから（推奨）
 cd parent-repo
-python3 Experiment_Agent_v2/run_agent.py orders reports logs cursor_template
+cursor_experiment_agent/.agent_env/bin/python cursor_experiment_agent/run_agent.py orders reports logs cursor_template
 
 # 本リポジトリ内のサンプルでデバッグ
 cd Experiment_Agent_v2
-python3 run_agent.py orders reports logs /path/to/cursor_template
+cursor_experiment_agent/.agent_env/bin/python run_agent.py orders reports logs /path/to/cursor_template
 
 # 進捗表示を抑制
-python3 run_agent.py orders reports logs cursor_template --quiet
+cursor_experiment_agent/.agent_env/bin/python run_agent.py orders reports logs cursor_template --quiet
 
 # 既存の出力を上書き
-python3 run_agent.py orders reports logs cursor_template --force
+cursor_experiment_agent/.agent_env/bin/python run_agent.py orders reports logs cursor_template --force
 
 # 短時間で試す（ディベート 2 ラウンド）
-python3 run_agent.py orders reports logs cursor_template --max-debate-rounds 2
+cursor_experiment_agent/.agent_env/bin/python run_agent.py orders reports logs cursor_template --max-debate-rounds 2
 ```
 
 ### 進捗表示
