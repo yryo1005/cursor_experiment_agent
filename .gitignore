@@ -16,3 +16,4 @@ build/
 *.swp
 .DS_Store
 cursor_template/
+.agent_env/
