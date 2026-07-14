@@ -1,7 +1,6 @@
 # 機械学習実験自動更新マルチエージェント Agent — 技術ドキュメント
 
-本ドキュメントは，本リポジトリ（Experiment Agent）の**使用方法**と**技術概念**をまとめたものである．
-要件の詳細は `root_order_001.md` 〜 `root_order_003.md` を参照すること．
+本ドキュメントは，本リポジトリ（cursor_experiment_agent）の**使用方法**と**技術概念**をまとめたものである．
 
 ---
 
@@ -19,8 +18,6 @@
 
 ## 2. 要件適合状況
 
-### 2.1. root_order_001.md（要件定義）
-
 | 要件 | 実装 |
 |:---|:---|
 | order/report 履歴の自動検出・時系列読み込み | `src/history.py` |
@@ -34,18 +31,8 @@
 | レートリミット対策（リトライ・スリープ） | `src/config.py` |
 | 親ディレクトリ名のハードコーディング禁止 | 全パスを CLI 引数で受け取る |
 | `log_{k+1}.md` 出力 | `log_dir` へ書き出し |
-
-### 2.2. root_order_002.md（追加要件）
-
-| 要件 | 実装 |
-|:---|:---|
 | `cursor_template` と重複する内容を order に含めない | Extract Template ノード + `exclusion_guide` + Generate/Red-Team プロンプト |
 | 会話ログを Markdown で出力 | `src/log_format.py` → `log_{n+1}.md` |
-
-### 2.3. root_order_003.md（配置仕様）
-
-| 要件 | 実装 |
-|:---|:---|
 | `order_dir`, `report_dir`, `log_dir`, `template_dir` を引数に | `run_agent.py` の 4 位置引数 |
 | ソースを `src/` に配置 | `Experiment_Agent_v2/src/` |
 | `run_agent.py` をリポジトリ直下に配置 | 準拠 |
@@ -86,7 +73,7 @@ python3 run_agent.py <order_dir> <report_dir> <log_dir> <template_dir>
 **例（親リポジトリから）:**
 
 ```bash
-python3 Experiment_Agent_v2/run_agent.py orders reports logs cursor_template
+python3 cursor_experiment_agent/run_agent.py orders reports logs cursor_template --tokens-path tokens.json
 ```
 
 **例（本リポジトリ内デバッグ）:**
